@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/chong.unity
+    guid: 39b24d338f7624ac0a1671a0f97c1ecd
+  - enabled: 1
     path: Assets/Scenes/title.unity
     guid: 95f6ffe2fcf844316988a42f7ccd6d80
   - enabled: 1
