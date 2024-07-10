@@ -13,7 +13,12 @@ public class bird_flying : MonoBehaviour {
 	public float speed;
 	Rigidbody2D rb2d;
 
-	void FixedUpdate () {
+    private void Update()
+    {
+		AchievementManager.TryIncrementStat(AchievementStatID.FLIGHT_TIME, Time.deltaTime);
+    }
+
+    void FixedUpdate () {
 		if(ready){
 			rb2d = GetComponent<Rigidbody2D> ();
 			rb2d.AddForce(new Vector2(0, 0) * speed);

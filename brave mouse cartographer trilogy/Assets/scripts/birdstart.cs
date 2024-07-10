@@ -11,6 +11,7 @@ public class birdstart : MonoBehaviour {
 
 	void Start () {
 		if(i){
+			AchievementManager.TryUnlockAchievement(AchievementID.ACT_I);
 			this.transform.position = new Vector3((Random.Range(-10f, 13f)), (Random.Range(-6f, 20f)), -10);
 		}
 		if(ii){
