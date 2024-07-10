@@ -16,6 +16,8 @@ public class GameController : MonoBehaviour {
 
 	public GameObject PrevPageButton, NextPageButton;
 
+	string SecretCode = "";
+
 	public void Awake(){
 		ExtrasPage.localScale = new Vector2(0, 1);
 		BookletImage.sprite = BookletPages[0];
@@ -76,6 +78,7 @@ public class GameController : MonoBehaviour {
 			BookletImage.sprite = BookletPages[CurrentBookletPage];
 			if(CurrentBookletPage + 1 == BookletPages.Count){
 				NextPageButton.SetActive(false);
+				AchievementManager.TryUnlockAchievement(AchievementID.WELL_READ);
 			}
 		}
 	}
@@ -89,6 +92,70 @@ public class GameController : MonoBehaviour {
 			BookletImage.sprite = BookletPages[CurrentBookletPage];
 			if(CurrentBookletPage == 0){
 				PrevPageButton.SetActive(false);
+			}
+		}
+	}
+
+	void Update(){
+		if(Input.anyKeyDown){
+			if(Input.GetKey("v")){
+				if(SecretCode == ""){
+					SecretCode = "v";
+				}
+				else{
+					SecretCode = "";
+				}
+			}
+			else if(Input.GetKey("o")){
+				if(SecretCode == "v"){
+					SecretCode = "vo";
+				}
+				else{
+					SecretCode = "";
+				}
+			}
+			else if(Input.GetKey("u")){
+				if(SecretCode == "vo"){
+					SecretCode = "vou";
+				}
+				else{
+					SecretCode = "";
+				}
+			}
+			else if(Input.GetKey("c")){
+				if(SecretCode == "vou"){
+					SecretCode = "vouc";
+				}
+				else{
+					SecretCode = "";
+				}
+			}
+			else if(Input.GetKey("h")){
+				if(SecretCode == "vouc"){
+					SecretCode = "vouch";
+				}
+				else{
+					SecretCode = "";
+				}
+			}
+			else if(Input.GetKey("e")){
+				if(SecretCode == "vouch"){
+					SecretCode = "vouche";
+				}
+				else{
+					SecretCode = "";
+				}
+			}
+			else if(Input.GetKey("r")){
+				if(SecretCode == "vouche"){
+					AchievementManager.TryUnlockAchievement(AchievementID.TRUE_CARTOGRAPHER);
+				}
+				else{
+					SecretCode = "";
+				}
+			}
+			else{
+				SecretCode = "";
 			}
 		}
 	}

@@ -11,6 +11,7 @@ public class Chong : MonoBehaviour
 
     private void Awake()
     {
+        Screen.SetResolution(1800, 1200, true);
         ChongRoutine = StartCoroutine(ChongTime());
     }
 
