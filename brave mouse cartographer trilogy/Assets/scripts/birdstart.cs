@@ -15,6 +15,7 @@ public class birdstart : MonoBehaviour {
 			this.transform.position = new Vector3((Random.Range(-10f, 13f)), (Random.Range(-6f, 20f)), -10);
 		}
 		if(ii){
+			AchievementManager.TryUnlockAchievement(AchievementID.ACT_II);
 			this.transform.position = new Vector3((Random.Range(-8f, 8f)), (Random.Range(-3f, 15f)), -10);
 		}
 		if(iii){

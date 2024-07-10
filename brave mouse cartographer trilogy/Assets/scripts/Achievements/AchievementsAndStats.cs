@@ -4,13 +4,15 @@ using UnityEngine;
 
 public enum AchievementID
 {
-    ACT_I,
-    ONE_MINUTE_FLIGHT
+    ACT_I = 0,
+    ACT_II = 1,
+    ACT_III = 3,
+    ONE_MINUTE_FLIGHT = 2,
 }
 
 public enum AchievementStatID
 {
-    FLIGHT_TIME
+    FLIGHT_TIME = 0
 }
 
 public class AchievementsAndStats : MonoBehaviour
@@ -18,6 +20,7 @@ public class AchievementsAndStats : MonoBehaviour
     public static Achievement[] Achievements = new Achievement[]
 {
         new Achievement(AchievementID.ACT_I, "Act I", ""),
+        new Achievement(AchievementID.ACT_II, "Act II", ""),
         new Achievement(AchievementID.ONE_MINUTE_FLIGHT, "One Minute Flight", "")
 };
 
@@ -37,9 +40,9 @@ public class AchievementsAndStats : MonoBehaviour
             {
                 case AchievementID.ONE_MINUTE_FLIGHT:
                     float time;
-                    if(AchievementManager.TryGetStat(AchievementStatID.FLIGHT_TIME, out time))
+                    if (AchievementManager.TryGetStat(AchievementStatID.FLIGHT_TIME, out time))
                     {
-                        if(time >= 60f)
+                        if (time >= 60f)
                         {
                             AchievementManager.TryUnlockAchievement(AchievementID.ONE_MINUTE_FLIGHT);
                         }
