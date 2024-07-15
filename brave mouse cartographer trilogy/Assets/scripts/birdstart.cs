@@ -11,16 +11,16 @@ public class birdstart : MonoBehaviour {
 
 	void Start () {
 		if(i){
-			AchievementManager.TryUnlockAchievement(AchievementID.ACT_I);
 			this.transform.position = new Vector3((Random.Range(-10f, 13f)), (Random.Range(-6f, 20f)), -10);
+			AchievementManager.TryUnlockAchievement(AchievementID.ACT_I);
 		}
 		if(ii){
-			AchievementManager.TryUnlockAchievement(AchievementID.ACT_II);
 			this.transform.position = new Vector3((Random.Range(-8f, 8f)), (Random.Range(-3f, 15f)), -10);
+			AchievementManager.TryUnlockAchievement(AchievementID.ACT_II);
 		}
 		if(iii){
-			AchievementManager.TryUnlockAchievement(AchievementID.ACT_III);
 			this.transform.position = new Vector3((Random.Range(-20f, 18f)), (Random.Range(-6f, 16f)), -10);
+			AchievementManager.TryUnlockAchievement(AchievementID.ACT_III);
 		}
 	}
 }

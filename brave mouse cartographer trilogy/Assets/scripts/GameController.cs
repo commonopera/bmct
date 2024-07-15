@@ -125,11 +125,11 @@ public class GameController : MonoBehaviour {
 			checkString == "bespoke sagas" || checkString == "idea translation" ||
 			checkString == "universal experience" || checkString == "data sculpture" ||
 			checkString == "ritual programming" || checkString == "patient chrysalis"){
-				AchievementManager.TryUnlockAchievement(AchievementID.TRUE_CARTOGRAPHER);
 				GoodAudioFeedback.Play();
 				PasswordPopupAvailable = false;
 				PasswordPopup.SetActive(false);
 				PasswordPopupActive = false;
+				AchievementManager.TryUnlockAchievement(AchievementID.TRUE_CARTOGRAPHER);
 			}
 			else{
 				BadAudioFeedback.Play();
