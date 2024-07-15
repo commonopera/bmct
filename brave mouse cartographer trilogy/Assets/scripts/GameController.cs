@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameController : MonoBehaviour {
 
@@ -14,9 +15,14 @@ public class GameController : MonoBehaviour {
 
 	int CurrentBookletPage = 0;
 
-	public GameObject PrevPageButton, NextPageButton;
+	public GameObject PrevPageButton, NextPageButton, PasswordPopup;
 
 	string SecretCode = "";
+
+	bool PasswordPopupAvailable = true, PasswordPopupActive = false;
+
+	public TMP_InputField InputField;
+	public AudioSource GoodAudioFeedback, BadAudioFeedback;
 
 	public void Awake(){
 		ExtrasPage.localScale = new Vector2(0, 1);
@@ -96,7 +102,42 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
+	public void ClosePasswordPopup(){
+		PasswordPopup.SetActive(false);
+		PasswordPopupActive = false;
+	}
+
 	void Update(){
+		if(PasswordPopupAvailable && Input.GetKey("c") && Input.GetKey("o")){
+			PasswordPopup.SetActive(true);
+			PasswordPopupActive = true;
+		}
+		if(Input.GetKeyDown(KeyCode.Return) && PasswordPopupActive){
+			string checkString = InputField.text.ToLower().Trim();
+			if(checkString == "baroque technologies" || checkString == "dream manufacture" ||
+			checkString == "genre refinement" || checkString == "systemic works" ||
+			checkString == "interactive tapestry" || checkString == "density engineering" ||
+			checkString == "intentional craft" || checkString == "human labor" ||
+			checkString == "schematic entertainment" || checkString == "precision worlding" ||
+			checkString == "detail smithing" || checkString == "media development" ||
+			checkString == "concept choreography" || checkString == "personal fantasy" ||
+			checkString == "orchestral media" || checkString == "generic mythos" ||
+			checkString == "bespoke sagas" || checkString == "idea translation" ||
+			checkString == "universal experience" || checkString == "data sculpture" ||
+			checkString == "ritual programming" || checkString == "patient chrysalis"){
+				AchievementManager.TryUnlockAchievement(AchievementID.TRUE_CARTOGRAPHER);
+				GoodAudioFeedback.Play();
+				PasswordPopupAvailable = false;
+				PasswordPopup.SetActive(false);
+				PasswordPopupActive = false;
+			}
+			else{
+				BadAudioFeedback.Play();
+				PasswordPopup.SetActive(false);
+				PasswordPopupActive = false;
+			}
+		}
+		/*
 		if(Input.anyKeyDown){
 			if(Input.GetKey("v")){
 				if(SecretCode == ""){
@@ -157,6 +198,6 @@ public class GameController : MonoBehaviour {
 			else{
 				SecretCode = "";
 			}
-		}
+		}*/
 	}
 }
