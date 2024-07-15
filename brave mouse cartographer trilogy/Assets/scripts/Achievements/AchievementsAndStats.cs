@@ -53,7 +53,7 @@ public class AchievementsAndStats : MonoBehaviour
 
     public static AchievementStat[] AchievementStats = new AchievementStat[]
     {
-        new AchievementStat(AchievementStatID.FLIGHT_TIME, AchievementStatType.FLOAT, AchievementID.ONE_MINUTE_FLIGHT)
+        new AchievementStat(AchievementStatID.FLIGHT_TIME, AchievementStatType.FLOAT, AchievementID.ONE_MINUTE_FLIGHT, AchievementID.ONE_HOUR_FLIGHT, AchievementID.TEN_HOUR_FLIGHT)
     };
 
     private void LateUpdate()
@@ -75,6 +75,29 @@ public class AchievementsAndStats : MonoBehaviour
                         }
                     }
                     break;
+
+                case AchievementID.ONE_HOUR_FLIGHT:
+                    time = 0f;
+                    if (AchievementManager.TryGetStat(AchievementStatID.FLIGHT_TIME, out time))
+                    {
+                        if (time >= 3600f)
+                        {
+                            AchievementManager.TryUnlockAchievement(AchievementID.ONE_HOUR_FLIGHT);
+                        }
+                    }
+                    break;
+
+                case AchievementID.TEN_HOUR_FLIGHT:
+                    time = 0f;
+                    if (AchievementManager.TryGetStat(AchievementStatID.FLIGHT_TIME, out time))
+                    {
+                        if (time >= 36000f)
+                        {
+                            AchievementManager.TryUnlockAchievement(AchievementID.TEN_HOUR_FLIGHT);
+                        }
+                    }
+                    break;
+
                 default:
                     break;
             }

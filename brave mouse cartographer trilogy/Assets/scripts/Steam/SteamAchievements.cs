@@ -61,16 +61,22 @@ public class SteamAchievements : MonoBehaviour
 
     public bool StoreStats()
     {
+        if (!SteamManager.Initialized)
+            return false;
         return SteamUserStats.StoreStats();
     }
 
     public void SetStat(AchievementStatID statID, int statValue)
     {
+        if (!SteamManager.Initialized)
+            return;
         SteamUserStats.SetStat(statID.ToString(), statValue);
     }
 
     public void SetStat(AchievementStatID statID, float statValue)
     {
+        if (!SteamManager.Initialized)
+            return;
         SteamUserStats.SetStat(statID.ToString(), statValue);
     }
 
@@ -96,6 +102,8 @@ public class SteamAchievements : MonoBehaviour
     {
         minValue = 0;
         maxValue = 0;
+        if (!SteamManager.Initialized)
+            return false;
         return SteamUserStats.GetAchievementProgressLimits(achievementName, out minValue, out maxValue);
     }
 
@@ -103,6 +111,8 @@ public class SteamAchievements : MonoBehaviour
     {
         minValue = 0f;
         maxValue = 0f;
+        if (!SteamManager.Initialized)
+            return false;
         return SteamUserStats.GetAchievementProgressLimits(achievementName, out minValue, out maxValue);
     }
 
@@ -113,6 +123,8 @@ public class SteamAchievements : MonoBehaviour
 
     public void UnlockAchievement(Achievement achievement)
     {
+        if (!SteamManager.Initialized)
+            return;
         // the icon may change once it's unlocked
         //achievement.m_iIconImage = 0;
 
