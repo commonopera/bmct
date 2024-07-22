@@ -43,6 +43,7 @@ public class AchievementsAndStats : MonoBehaviour
         new Achievement(AchievementID.FORBIDDEN_GEM, "Forbidden Gem", ""),
         new Achievement(AchievementID.ODD_CUBE, "Odd Cube", ""),
         new Achievement(AchievementID.COLD_FATE, "Cold Fate", ""),
+        new Achievement(AchievementID.STONY_GAZE, "Stony Gaze", ""),
         new Achievement(AchievementID.RING_OF_WATER, "Ring Of Water", ""),
         new Achievement(AchievementID.SUN_MENTOR, "Sun Mentor", ""),
         new Achievement(AchievementID.GLASSLANDS, "Glasslands", ""),

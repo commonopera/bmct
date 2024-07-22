@@ -15,7 +15,7 @@ public class GameController : MonoBehaviour {
 
 	int CurrentBookletPage = 0;
 
-	public GameObject PrevPageButton, NextPageButton, PasswordPopup;
+	public GameObject PrevPageButton, NextPageButton, PasswordPopup, ComposersNotesPage;
 
 	string SecretCode = "";
 
@@ -57,6 +57,14 @@ public class GameController : MonoBehaviour {
 		if(!Transitioning){
 			StartCoroutine(ToggleExtras(false));
 		}
+	}
+
+	public void OpenComposersNotesPage(){
+		ComposersNotesPage.SetActive(true);
+	}
+
+	public void CloseComposersNotesPage(){
+		ComposersNotesPage.SetActive(false);
 	}
 
 	IEnumerator ToggleExtras(bool entering){
